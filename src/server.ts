@@ -2,7 +2,7 @@ import express, { Request, Response, NextFunction } from 'express';
 
 const app = express();
 
-// Middleware para habilitar o CORS
+// Middleware para permitir solicitações CORS (Cross-Origin Resource Sharing)
 app.use((req: Request, res: Response, next: NextFunction) => {
     res.header('Access-Control-Allow-Origin', '*');
     res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
@@ -11,11 +11,11 @@ app.use((req: Request, res: Response, next: NextFunction) => {
 });
 
 app.get('/', (req: Request, res: Response) => {
-    res.send({ message: 'home' });
+    res.json({ message: 'home' });
 });
 
 app.use((req: Request, res: Response) => {
-    res.status(404).send({ message: 'página não encontrada' });
+    res.status(404).json({ message: 'página não encontrada' });
 });
 
 const PORT = process.env.PORT || 4000;
