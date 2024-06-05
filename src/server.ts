@@ -1,13 +1,10 @@
+import cors from 'cors'; // Importe o pacote cors
 import express, { Request, Response } from 'express';
 
 const app = express();
-const cors = require('cors');
 
-app.use((req,res,next)=> {
-    res.header("Acess-Control-Allow-Origin","*");
-    app.use(cors());
-    next();
-});
+// Use o middleware cors
+app.use(cors());
 
 app.get('/', (req: Request, res: Response) => {
     res.json({ message: 'home' });

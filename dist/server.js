@@ -3,14 +3,11 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+const cors_1 = __importDefault(require("cors")); // Importe o pacote cors
 const express_1 = __importDefault(require("express"));
 const app = (0, express_1.default)();
-const cors = require('cors');
-app.use((req, res, next) => {
-    res.header("Acess-Control-Allow-Origin", "*");
-    app.use(cors());
-    next();
-});
+// Use o middleware cors
+app.use((0, cors_1.default)());
 app.get('/', (req, res) => {
     res.json({ message: 'home' });
 });
