@@ -3,7 +3,11 @@ import express, { Request, Response } from 'express';
 const app = express();
 const cors = require('cors');
 
-app.use(cors());
+app.use((req,res,next)=> {
+    res.header("Acess-Control-Allow-Origin","*");
+    app.use(cors());
+    next();
+});
 
 app.get('/', (req: Request, res: Response) => {
     res.json({ message: 'home' });

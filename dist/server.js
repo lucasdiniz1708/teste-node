@@ -6,7 +6,11 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const app = (0, express_1.default)();
 const cors = require('cors');
-app.use(cors());
+app.use((req, res, next) => {
+    res.header("Acess-Control-Allow-Origin", "*");
+    app.use(cors());
+    next();
+});
 app.get('/', (req, res) => {
     res.json({ message: 'home' });
 });
