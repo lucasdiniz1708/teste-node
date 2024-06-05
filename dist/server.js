@@ -6,11 +6,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const app = (0, express_1.default)();
 const cors = require('cors');
-// Middleware para permitir solicitações CORS (Cross-Origin Resource Sharing)
-app.use((req, res, next) => {
-    app.use(cors());
-    next();
-});
+app.use(cors());
 app.get('/', (req, res) => {
     res.json({ message: 'home' });
 });
