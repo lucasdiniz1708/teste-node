@@ -1,12 +1,12 @@
-import express, { Request, Response, NextFunction } from 'express';
+import express, { Request, Response } from 'express';
 
 const app = express();
+const cors = require('cors');
+
 
 // Middleware para permitir solicitações CORS (Cross-Origin Resource Sharing)
-app.use((req: Request, res: Response, next: NextFunction) => {
-    res.header('Access-Control-Allow-Origin', '*');
-    res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
-    res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+app.use((req, res, next) => {
+    app.use(cors());
     next();
 });
 
