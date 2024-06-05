@@ -3,12 +3,7 @@ import express, { Request, Response } from 'express';
 const app = express();
 const cors = require('cors');
 
-
-// Middleware para permitir solicitações CORS (Cross-Origin Resource Sharing)
-app.use((req, res, next) => {
-    app.use(cors());
-    next();
-});
+app.use(cors());
 
 app.get('/', (req: Request, res: Response) => {
     res.json({ message: 'home' });
